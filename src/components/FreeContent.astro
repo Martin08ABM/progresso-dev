@@ -10,7 +10,7 @@
             <div class="flex flex-row w-full justify-center align-center mt-4 mb-2"><!-- Div que contiene el input y el botón de enviar -->
                 <input type="text" class="w-2/4 h-10 p-2 black border-solid border-2 rounded-lg mt-4" placeholder="Explica a la IA lo que quieres aprender..." / id="input-text"><!-- Input principal con el que se le da la información a la IA de lo que se quiere aprender -->
                 <div class="flex flex-col justify-center align-center ml-4"><!-- Div del botón de enviar -->
-                    <button type="submit" class="border-none bg-blue-800 text-white text-[16px] font-bold w-18 h-8 p-1 rounded-xl mt-3" id="submitButton">Enviar</button>
+                    <button type="submit" class="border-none bg-blue-800 text-white text-[16px] font-bold w-18 h-8 p-1 rounded-xl mt-3" onclick="enviarDatos()" >Enviar</button>
                 </div>
             </div>
             <div class="flex flex-col justify-center align-center"><!-- Div que contiene el input y el botón de enviar -->
@@ -51,7 +51,7 @@
                                 <input type="checkbox" class="mr-1 option-checkbox" name="frontend" value="devOps" id="devOps" /> DevOps
                             </label>
                             <label class="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-400 transition duration-300 ease-in-out" role="menuitem">
-                                <input type="checkbox" class="mr-1 option-checkbox" name="frontend" value="cibersecurity" id="cibersevurity" /> Ciberseguridad
+                                <input type="checkbox" class="mr-1 option-checkbox" name="frontend" value="cibersecurity" id="cibersecurity" /> Ciberseguridad
                             </label>
                             <label class="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-400 transition duration-300 ease-in-out" role="menuitem">
                                 <input type="checkbox" class="mr-1 option-checkbox" name="frontend" value="cloudEngineer" id="cloudEngineer" /> Cloud
