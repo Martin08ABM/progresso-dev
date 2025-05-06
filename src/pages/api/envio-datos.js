@@ -1,11 +1,4 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const { OpenAI } = require('openai');
-
-const app = express();
-app.use(cors());
-app.use(express.json());
+import { OpenAI } from 'openai';
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -20,11 +13,16 @@ Eres un asistente que genera roadmaps visuales. Cuando recibas un prompt, debes:
     5. Indicar si algún paso requiere conocimientos técnicos, y cuáles.
 `;
 
-app.post('/recogidaDatos', async (req, res) => {
-    const { prompt } = req.body;
-    console.log("ENVIO-DATOS ESTA FUNCIONANDO");
+export async function POST(request) {
+    const req = await request.json()
+    const { prompt } = req;
     if (!prompt) {
-        return res.status(400).json({ error: 'No input provided' });
+        return new Response(JSON.stringify({ error: 'No input provided' }), {
+            status: 400,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+        });
     }
 
     const prompt_con_normas = `${NORMAS_CHATGPT}\n\nPrompt del usuario: ${prompt}`;
@@ -32,12 +30,12 @@ app.post('/recogidaDatos', async (req, res) => {
     try {
         // Paso 1: generar respuesta de GPT-4
         const chatResponse = await openai.chat.completions.create({
-        model: "gpt-4",
-        messages: [
-            { role: "user", content: prompt_con_normas }
-        ],
-        temperature: 0.7,
-        max_tokens: 1500,
+            model: "gpt-4",
+            messages: [
+                { role: "user", content: prompt_con_normas }
+            ],
+            temperature: 0.7,
+            max_tokens: 1500,
         });
 
         const respuestaChat = chatResponse.choices[0].message.content;
@@ -48,31 +46,41 @@ app.post('/recogidaDatos', async (req, res) => {
         const promptVisual = lineaPrompt ? lineaPrompt.split(':').slice(1).join(':').trim() : null;
 
         if (!promptVisual) {
-        return res.status(500).json({ error: 'No se encontró prompt visual' });
+            return new Response(JSON.stringify({ error: 'No se encontró prompt visual' }), {
+                status: 500,
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            });
         }
 
         // Paso 2: generar imagen con DALL·E-3
         const imageResponse = await openai.images.generate({
-        model: "dall-e-3",
-        prompt: promptVisual,
-        size: "1024x1024",
-        n: 1,
+            model: "dall-e-3",
+            prompt: promptVisual,
+            size: "1024x1024",
+            n: 1,
         });
 
         const imageUrl = imageResponse.data[0].url;
 
-        return res.json({
-        respuesta: respuestaChat,
-        imagen: imageUrl,
+        return new Response(JSON.stringify({
+            respuesta: respuestaChat,
+            imagen: imageUrl,
+        }), {
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+            },
         });
 
     } catch (error) {
         console.error("Error al comunicarse con OpenAI:", error);
-        return res.status(500).json({ error: 'Error al procesar la solicitud' });
+        return new Response(JSON.stringify({ error: 'Error al procesar la solicitud' }), {
+            status: 500,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+        });
     }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+}
