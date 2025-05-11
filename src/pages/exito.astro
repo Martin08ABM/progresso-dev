@@ -1,5 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { userTracker } from '../utils/userTracker';
+
+// En un script en el lado del cliente
+document.addEventListener('DOMContentLoaded', () => {
+    if (getCookie('proPayed') === 'true') {
+        userTracker.updateProStatus(true);
+    }
+});
 ---
 
 <Layout title="¡Pago Completado! - ProgressoDev Pro">

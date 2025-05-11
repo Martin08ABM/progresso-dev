@@ -1,4 +1,5 @@
 import { Astro } from 'astro';
+import 'dotenv/config'
 
 // Importa Stripe dinámicamente para manejar la compatibilidad del entorno
 const loadStripe = async () => {
@@ -15,7 +16,7 @@ export async function POST(context) {
   try {
     console.log('API de pago iniciada');
 
-    const stripeKey = import.meta.env.STRIPE_SECRET_KEY;
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
 
     if (!stripeKey) {
       console.error('No se encontró la clave de API de Stripe');
@@ -29,6 +30,12 @@ export async function POST(context) {
         }
       );
     }
+    
+    // Establecemos la cookie en la respuesta, no con document.cookie
+    const responseHeaders = new Headers({
+      "Content-Type": "application/json",
+      "Set-Cookie": "proPayed=true; expires=Thu, 01 Jan 9999 00:00:00 UTC; path=/;"
+    });
 
     const Stripe = await loadStripe();
     if (!Stripe) {
@@ -71,9 +78,7 @@ export async function POST(context) {
       JSON.stringify({ url: session.url }),
       {
         status: 200,
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: responseHeaders
       }
     );
   } catch (err) {
