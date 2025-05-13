@@ -9,9 +9,9 @@ console.log("Variables de entorno cargadas (SUPABASE_ANON_KEY): ", process.env.S
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // Configuración de Supabase para el lado del servidor
-// const supabaseUrl = process.env.SUPABASE_URL;
-// const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
-// const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const NORMAS_CHATGPT = `
 Eres un asistente que genera roadmaps visuales. Cuando recibas un prompt, debes:
