@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite'; // Importación de tailwindcss para
 import clerk from '@clerk/astro'; // Importación de Clerk para la autenticación y gestión de usuarios
 import node from '@astrojs/node'; // Importación del adaptador de Node.js para Astro
 
+import vercel from '@astrojs/vercel';
+
 export default defineConfig({
   integrations: [clerk()],
   vite: {
@@ -13,7 +15,5 @@ export default defineConfig({
     logLevel: 'info',
   },
   output: 'server',
-  adapter: node({
-    mode: 'standalone'
-  })
+  adapter: vercel()
 });

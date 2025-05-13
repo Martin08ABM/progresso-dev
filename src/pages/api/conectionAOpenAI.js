@@ -9,9 +9,9 @@ console.log("Variables de entorno cargadas (SUPABASE_ANON_KEY): ", process.env.S
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // Configuración de Supabase para el lado del servidor
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// const supabaseUrl = process.env.SUPABASE_URL;
+// const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+// const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const NORMAS_CHATGPT = `
 Eres un asistente que genera roadmaps visuales. Cuando recibas un prompt, debes:
@@ -22,8 +22,9 @@ Eres un asistente que genera roadmaps visuales. Cuando recibas un prompt, debes:
     5. Indicar si algún paso requiere conocimientos técnicos, y cuáles.
 `;
 
-export async function POST(request) { // Exportación de la función POST
+export async function POST({ request }) { // Exportación de la función POST
     try {
+
         const req = await request.json();
         const { prompt, userId  } = req;  // Recibimos el userId
 
@@ -61,7 +62,7 @@ export async function POST(request) { // Exportación de la función POST
 
         // Paso 1: generar respuesta de GPT-4
         const chatResponse = await openai.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
                 { role: "user", content: prompt_con_normas }
             ],
