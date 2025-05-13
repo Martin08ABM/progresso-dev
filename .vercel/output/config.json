@@ -1,0 +1,59 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/check-env/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/checkout/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/conectionAOpenAI/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/buena-prompt/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/exito/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/payment/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/Private/dashboard/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/test-api/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/$",
+			"dest": "_render"
+		}
+	]
+}
