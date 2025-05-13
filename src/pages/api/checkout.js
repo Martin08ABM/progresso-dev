@@ -1,4 +1,3 @@
-import { Astro } from 'astro';
 import 'dotenv/config'
 
 // Importa Stripe dinámicamente para manejar la compatibilidad del entorno
