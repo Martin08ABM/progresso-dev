@@ -1,6 +1,6 @@
 import { c as createComponent, m as maybeRenderHead, d as renderScript, b as renderTemplate, r as renderComponent } from "../chunks/astro/server_tsOAALlV.mjs";
 import "kleur/colors";
-import { $ as $$Layout } from "../chunks/Layout_CZzJ32_Z.mjs";
+import { $ as $$Layout } from "../chunks/Layout_dC7IRO5r.mjs";
 import "clsx";
 import { r } from "../chunks/internal_CWyUhqTg.mjs";
 const $$FreeContent = createComponent(async ($$result, $$props, $$slots) => {

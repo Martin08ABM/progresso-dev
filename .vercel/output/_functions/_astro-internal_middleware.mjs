@@ -10,24 +10,24 @@ import { decodeJwt } from "@clerk/backend/jwt";
 import { DEV_BROWSER_JWT_KEY, setDevBrowserJWTInURL } from "@clerk/shared/devBrowser";
 import "@clerk/shared/pathMatcher";
 import "es-module-lexer";
-import "./chunks/astro-designed-error-pages_CSUi1tTK.mjs";
+import "./chunks/astro-designed-error-pages_srxAhvFj.mjs";
 import "kleur/colors";
 import "./chunks/astro/server_tsOAALlV.mjs";
 import "clsx";
 import "cookie";
-import { s as sequence } from "./chunks/index_itimKVPi.mjs";
+import { s as sequence } from "./chunks/index_BdycSl9W.mjs";
 async function createAsyncLocalStorage() {
   const { AsyncLocalStorage } = await import("node:async_hooks");
   return new AsyncLocalStorage();
 }
 var authAsyncStorage = await createAsyncLocalStorage();
-const __vite_import_meta_env__ = { "ASSETS_PREFIX": void 0, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_ZnVua3ktdGVybWl0ZS03Ni5jbGVyay5hY2NvdW50cy5kZXYk", "SITE": void 0, "SSR": true };
+const __vite_import_meta_env__ = { "ASSETS_PREFIX": void 0, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_live_Y2xlcmsuaG9sYS5ob2xhJA", "SITE": void 0, "SSR": true };
 function getContextEnvVar(envVarName, contextOrLocals) {
   const locals = "locals" in contextOrLocals ? contextOrLocals.locals : contextOrLocals;
   if (locals?.runtime?.env) {
     return locals.runtime.env[envVarName];
   }
-  return Object.assign(__vite_import_meta_env__, { CLERK_SECRET_KEY: "sk_test_rl7XRuT06a17LOCXBQIPFvbakaOYVG0XF1iDOYhDHF", Path: process.env.Path, PUBLIC: process.env.PUBLIC })[envVarName];
+  return Object.assign(__vite_import_meta_env__, { CLERK_SECRET_KEY: "sk_live_BVLU4EsNtyKwIOmW44pv6HFZNbB5mEzLoZ38tXXjxf", Path: process.env.Path, PUBLIC: process.env.PUBLIC })[envVarName];
 }
 function getSafeEnv(context) {
   return {
@@ -92,7 +92,7 @@ var createClerkClientWithOptions = (context, options) => createClerkClient({
     name: "@clerk/astro",
     version: "2.6.12",
     // eslint-disable-next-line turbo/no-undeclared-env-vars
-    environment: Object.assign(__vite_import_meta_env__, { CLERK_SECRET_KEY: "sk_test_rl7XRuT06a17LOCXBQIPFvbakaOYVG0XF1iDOYhDHF", Path: process.env.Path, PUBLIC: process.env.PUBLIC }).MODE
+    environment: Object.assign(__vite_import_meta_env__, { CLERK_SECRET_KEY: "sk_live_BVLU4EsNtyKwIOmW44pv6HFZNbB5mEzLoZ38tXXjxf", Path: process.env.Path, PUBLIC: process.env.PUBLIC }).MODE
   },
   telemetry: {
     disabled: getSafeEnv(context).telemetryDisabled,

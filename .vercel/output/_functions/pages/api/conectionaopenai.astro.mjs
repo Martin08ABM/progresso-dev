@@ -1,10 +1,14 @@
 import OpenAI from "openai";
+import { createClient } from "@supabase/supabase-js";
 import "dotenv/config";
 import { r } from "../../chunks/internal_CWyUhqTg.mjs";
 console.log("Variables de entorno cargadas (OPENAI_API_KEY): ", process.env.OPENAI_API_KEY);
 console.log("Variables de entorno cargadas (SUPABASE_URL): ", process.env.SUPABASE_URL);
 console.log("Variables de entorno cargadas (SUPABASE_ANON_KEY): ", process.env.SUPABASE_ANON_KEY);
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const NORMAS_CHATGPT = `
 Eres un asistente que genera roadmaps visuales. Cuando recibas un prompt, debes:
     1. Crear una descripción de una imagen que represente el roadmap.

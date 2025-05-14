@@ -1,6 +1,6 @@
 import { c as createComponent, a as createAstro, r as renderComponent, b as renderTemplate, m as maybeRenderHead } from "../chunks/astro/server_tsOAALlV.mjs";
 import "kleur/colors";
-import { $ as $$Layout } from "../chunks/Layout_CZzJ32_Z.mjs";
+import { $ as $$Layout } from "../chunks/Layout_dC7IRO5r.mjs";
 import { r } from "../chunks/internal_CWyUhqTg.mjs";
 const $$Astro = createAstro();
 const $$BuenaPrompt = createComponent(($$result, $$props, $$slots) => {
